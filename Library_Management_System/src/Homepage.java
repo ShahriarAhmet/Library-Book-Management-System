@@ -59,6 +59,11 @@ public class Homepage extends javax.swing.JFrame {
         jButton2.setMaximumSize(new java.awt.Dimension(159, 59));
         jButton2.setMinimumSize(new java.awt.Dimension(159, 59));
         jButton2.setPreferredSize(new java.awt.Dimension(159, 59));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(255, 0, 0));
@@ -127,6 +132,11 @@ public class Homepage extends javax.swing.JFrame {
         new NewStudent().setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+       new NewBook().setVisible(true); 
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
