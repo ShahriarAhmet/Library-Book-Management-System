@@ -1,3 +1,9 @@
+
+import Project.ConnectionEnable;
+import java.sql.*;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -38,6 +44,7 @@ public class IssueBook extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(325, 125));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -73,11 +80,21 @@ public class IssueBook extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 153, 51));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Issue");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(255, 153, 153));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("Cancel");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\NetBeansProjects\\Library Management System UsedImages\\ExtraBoard3.jpg")); // NOI18N
@@ -85,6 +102,52 @@ public class IssueBook extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat dformat = new SimpleDateFormat("dd-MM-yyyy");
+        String bookID = jTextField1.getText();
+        String studentID = jTextField2.getText();
+        String issueDate = dformat.format(jDateChooser1.getDate());
+        String dueDate = dformat.format(jDateChooser2.getDate());
+        String returnBook = "No";
+        
+       try 
+        {
+         Connection con = ConnectionEnable.getCon();
+         Statement st = con.createStatement();
+         ResultSet rs = st.executeQuery("select *from book where bookID='"+bookID+"'");      
+            if (rs.next()) 
+            {
+               ResultSet rs1 = st.executeQuery("select *from student ID where studentID='"+studentID+"'");
+                
+               if (rs1.next()) 
+               {
+                st.executeUpdate("insert into issue values('"+bookID+"','"+studentID+"','"+issueDate+"','"+dueDate+"','"+returnBook+"')");
+                JOptionPane.showMessageDialog(null, "Book successfully issued");
+                setVisible(false);
+                new  IssueBook().setVisible(true);  
+               } 
+               else 
+               {
+                JOptionPane.showConfirmDialog(null, "Incorrect StudentID");
+               }     
+            } 
+            else 
+            {
+               JOptionPane.showConfirmDialog(null, "Incorrect BookID");   
+            }                             
+        } 
+        catch (Exception e) 
+        {
+         JOptionPane.showMessageDialog(null, "Connection Error");       
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

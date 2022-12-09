@@ -73,6 +73,11 @@ public class Homepage extends javax.swing.JFrame {
         jButton3.setMaximumSize(new java.awt.Dimension(159, 59));
         jButton3.setMinimumSize(new java.awt.Dimension(159, 59));
         jButton3.setPreferredSize(new java.awt.Dimension(159, 59));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
 
         jButton4.setBackground(new java.awt.Color(255, 0, 0));
@@ -82,6 +87,11 @@ public class Homepage extends javax.swing.JFrame {
         jButton4.setMaximumSize(new java.awt.Dimension(159, 59));
         jButton4.setMinimumSize(new java.awt.Dimension(159, 59));
         jButton4.setPreferredSize(new java.awt.Dimension(159, 59));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 30, 170, -1));
 
         jButton5.setBackground(new java.awt.Color(255, 0, 0));
@@ -91,6 +101,11 @@ public class Homepage extends javax.swing.JFrame {
         jButton5.setMaximumSize(new java.awt.Dimension(159, 59));
         jButton5.setMinimumSize(new java.awt.Dimension(159, 59));
         jButton5.setPreferredSize(new java.awt.Dimension(159, 59));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 30, 180, -1));
 
         jButton6.setBackground(new java.awt.Color(255, 0, 0));
@@ -137,6 +152,21 @@ public class Homepage extends javax.swing.JFrame {
         // TODO add your handling code here:
        new NewBook().setVisible(true); 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        new IssueBook().setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        new ReturnBook().setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        new Records().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
