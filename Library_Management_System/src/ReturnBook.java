@@ -42,6 +42,7 @@ public class ReturnBook extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -111,6 +112,17 @@ public class ReturnBook extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
 
+        jButton4.setBackground(new java.awt.Color(0, 0, 0));
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Delete");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
+
         jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Documents\\NetBeansProjects\\Library Management System UsedImages\\ExtraBoard3.jpg")); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -164,7 +176,7 @@ public class ReturnBook extends javax.swing.JFrame {
             } 
             else 
             {
-              JOptionPane.showMessageDialog(null, "Book is not issued to this student");
+              JOptionPane.showMessageDialog(null, "Book is not issued to this student.");
               setVisible(false);
               new ReturnBook().setVisible(true);
             }
@@ -175,6 +187,26 @@ public class ReturnBook extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Connection Error");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        String bookID = jTextField1.getText();
+        String studentID = jTextField2.getText();
+         
+        try 
+        {
+            Connection con = ConnectionEnable.getCon();
+            Statement st = con.createStatement();
+            st.executeUpdate("DELETE FROM issue where studentID='"+studentID+"' and bookID='"+bookID+"'");
+            JOptionPane.showMessageDialog(null, "Record successfully deleted.");
+            setVisible(false);
+            new ReturnBook().setVisible(true);
+        } 
+        catch (Exception e) 
+        {
+           JOptionPane.showMessageDialog(null, "Connection Error"); 
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,6 +247,7 @@ public class ReturnBook extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
